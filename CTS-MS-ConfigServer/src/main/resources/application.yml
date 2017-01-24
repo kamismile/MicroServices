@@ -7,4 +7,4 @@ spring:
       server:
         git:
           uri: https://github.com/saibalghosh1980/MicroServices
-          basedir: CONFIG
+          searchPaths: CONFIG

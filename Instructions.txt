@@ -1,5 +1,10 @@
 Pivotal
 s.aibalkumarghosh@gmail.com/User@1234
+
+kenny65
 ==================================================================================================
 SPRING CLOUD CONFIG
+
+
+http://localhost:8001/sample-config-client/default/ [Where the json is published]
 ==================================================================================================
