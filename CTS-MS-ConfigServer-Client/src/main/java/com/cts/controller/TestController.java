@@ -12,29 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cts.bo.ExceptionBO;
 import com.cts.bo.TestBO;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RefreshScope
 @RestController
-@Api(value = "TestAPI", description = "Operations pertaining to Online Store")
 @RequestMapping("/test")
+@Api(value = "APITest",description = "Operations pertaining to Online Store")
 public class TestController {
 
 	@Value("${test-word}")
 	private String testName;
 
 	@CrossOrigin
-	@ApiOperation(value = "View Something the Specific info of the product")
+	@ApiOperation(value = "View Something the Specific info of the product", response = TestBO.class)
+	@ApiResponses(value = { @ApiResponse(code = 301, message = "Name Fetched Successfully", response = TestBO.class),
+			@ApiResponse(code = 500, message = "Error Fetching", response = ExceptionBO.class) })
 	@RequestMapping(value = "/showname", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<?> showName() {
 		TestBO test = new TestBO();
 		test.setId(UUID.randomUUID().toString());
 		test.setName(testName);
-		//int i=1/0;
+		int i=1/0;
 		return new ResponseEntity<TestBO>(test, HttpStatus.FOUND);
 	}
 }

@@ -4,3 +4,5 @@ SPRING SWAGGER
 	http://heidloff.net/article/usage-of-swagger-2-0-in-spring-boot-applications-to-document-apis/
 	https://springfox.github.io/springfox/docs/current/#usage-guide
 ----------------------------------------------------------------------------------------------------
+
+http://www.oresteluci.com/java-rest-xml-json-response/
