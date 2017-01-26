@@ -28,12 +28,13 @@ public class TestController {
 
 	@CrossOrigin
 	@ApiOperation(value = "View Something the Specific info of the product")
-	@RequestMapping(value = "/showname", method = RequestMethod.GET, produces = {
-			MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/showname", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<?> showName() {
 		TestBO test = new TestBO();
 		test.setId(UUID.randomUUID().toString());
 		test.setName(testName);
+		//int i=1/0;
 		return new ResponseEntity<TestBO>(test, HttpStatus.FOUND);
 	}
 }
