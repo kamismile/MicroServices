@@ -39,7 +39,7 @@ public class TestController {
 		TestBO test = new TestBO();
 		test.setId(UUID.randomUUID().toString());
 		test.setName(testName);
-		int i=1/0;
+		//int i=1/0;
 		return new ResponseEntity<TestBO>(test, HttpStatus.FOUND);
 	}
 }
