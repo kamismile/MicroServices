@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/saibalghosh1980/MicroServices
-          searchPaths: CONFIG
+          uri: https://github.com/saibalghosh1980/AllConfig
+          searchPaths: 

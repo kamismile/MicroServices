@@ -1,1 +1,6 @@
 Messaging-->D:\HK\eBooks\DOWNLOADED_FROM_SAFARI\SpringMicroservices\spring-microservices-ch037.mhtml
+----------------------------------------------------------------------------------------------------
+SPRING SWAGGER
+	http://heidloff.net/article/usage-of-swagger-2-0-in-spring-boot-applications-to-document-apis/
+	https://springfox.github.io/springfox/docs/current/#usage-guide
+----------------------------------------------------------------------------------------------------
