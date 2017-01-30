@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiResponses;
 @RefreshScope
 @RestController
 @RequestMapping("/test")
-@Api(value = "APITest",description = "Operations pertaining to Online Store")
+@Api(value = "APITest", description = "Operations pertaining to Online Store")
 public class TestController {
 
 	@Value("${test-word}")
@@ -31,7 +31,7 @@ public class TestController {
 
 	@CrossOrigin
 	@ApiOperation(value = "View Something the Specific info of the product", response = TestBO.class)
-	@ApiResponses(value = { @ApiResponse(code = 301, message = "Name Fetched Successfully", response = TestBO.class),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Name Fetched Successfully", response = TestBO.class),
 			@ApiResponse(code = 500, message = "Error Fetching", response = ExceptionBO.class) })
 	@RequestMapping(value = "/showname", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
@@ -39,7 +39,18 @@ public class TestController {
 		TestBO test = new TestBO();
 		test.setId(UUID.randomUUID().toString());
 		test.setName(testName);
-		//int i=1/0;
-		return new ResponseEntity<TestBO>(test, HttpStatus.FOUND);
+		return new ResponseEntity<TestBO>(test, HttpStatus.OK);
+	}
+
+	@CrossOrigin
+	@ApiOperation(value = "View Error Response", response = TestBO.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Name Fetched Successfully", response = TestBO.class),
+			@ApiResponse(code = 500, message = "Error Fetching", response = ExceptionBO.class) })
+	@RequestMapping(value = "/showerror", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<?> showError() {
+
+		int i = 1 / 0;
+		return new ResponseEntity<Object>(null, HttpStatus.OK);
 	}
 }
