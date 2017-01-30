@@ -21,6 +21,7 @@ http://localhost:8001/sample-config-client/default/ [Where the json is published
 
 The refresh the the properties if being chnaged then do an empty POST at
 http://localhost:8002/refresh
+http://localhost:8002/shutdown
 ==================================================================================================
 MongoDB Start Command
 mongod --storageEngine=mmapv1 --dbpath=dataForSpringMS
