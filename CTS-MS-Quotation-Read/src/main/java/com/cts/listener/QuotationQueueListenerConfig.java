@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import com.rabbitmq.client.Channel;
 
 @Configuration
-public class QuotationQueueListener {
+public class QuotationQueueListenerConfig {
 
 	@Bean(name="springManagedReadQuotationQueue")
 	public SpringAMQPMessageSource readQuotationQueue(Serializer serializer) {
