@@ -53,4 +53,15 @@ public class TestController {
 		int i = 1 / 0;
 		return new ResponseEntity<Object>(null, HttpStatus.OK);
 	}
+	
+	@CrossOrigin
+	@ApiOperation(value = "A very slow service", response = TestBO.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Name Fetched Successfully", response = TestBO.class),
+			@ApiResponse(code = 500, message = "Error Fetching", response = ExceptionBO.class) })
+	@RequestMapping(value = "/slow", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<?> slowService() throws InterruptedException {
+		Thread.sleep(80000);
+		return new ResponseEntity<Object>("timeout", HttpStatus.OK);
+	}
 }
