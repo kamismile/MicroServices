@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
 
-//@Configuration
+@Configuration
 public class FDCZuulCustomFallbackProviderConfig{
 
-	//@Bean
+	@Bean
     public ZuulFallbackProvider zuulFallbackProvider() {
         return new ZuulFallbackProvider() {
             @Override
