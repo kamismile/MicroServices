@@ -1,9 +1,11 @@
 package com.cts.event;
 
 import com.cts.bo.QuotaionBO;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateQuotationEvent {
 
+	@JsonProperty("Quote")
 	private QuotaionBO quotaionBO;
 
 	public QuotaionBO getQuotaionBO() {

@@ -35,5 +35,5 @@ public class RabbitMQConfig {
 		admin.declareQueue(queue());
 		admin.declareBinding(binding());
 	}
-
+	
 }
