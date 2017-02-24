@@ -18,8 +18,16 @@ public class CreateQuotationEventHandler {
 	@Qualifier(value = "springManagedQuotationRepository")
 	private QuotationRepository quotationRepository;
 
-	@EventHandler
+	/*@EventHandler
 	public void on(CreateQuotationEvent event) {
+		quotationRepository.save(new QuotationDTO(event.getQuotaionBO().getId(), event.getQuotaionBO().getPolicyType(),
+				event.getQuotaionBO().getProductType(), event.getQuotaionBO().getPlanCode()));
+
+	}*/
+	
+	@EventHandler
+	public void on(Object item) {
+		CreateQuotationEvent event=(CreateQuotationEvent)item;
 		quotationRepository.save(new QuotationDTO(event.getQuotaionBO().getId(), event.getQuotaionBO().getPolicyType(),
 				event.getQuotaionBO().getProductType(), event.getQuotaionBO().getPlanCode()));
 

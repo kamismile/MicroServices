@@ -51,6 +51,10 @@ public class QuotaionBO {
 	public void setPlanCode(String planCode) {
 		this.planCode = planCode;
 	}
+	
+	public QuotaionBO(){
+		
+	}
 
 	public QuotaionBO(String id, String policyType, String productType, String planCode) {
 		super();
