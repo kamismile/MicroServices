@@ -3,7 +3,7 @@ package com.cts.command;
 import com.cts.bo.QuotaionBO;
 
 public class CreateQuotationCommand {
-	
+	 
 	private QuotaionBO quotaionBO;
 
 	public QuotaionBO getQuotaionBO() {

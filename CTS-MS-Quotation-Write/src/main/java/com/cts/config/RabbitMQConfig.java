@@ -1,5 +1,6 @@
 package com.cts.config;
 
+import org.axonframework.amqp.eventhandling.RoutingKeyResolver;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -16,7 +17,7 @@ public class RabbitMQConfig {
 
 	@Bean
 	public Exchange exchange() {
-		return ExchangeBuilder.fanoutExchange("FDC-QUOTATION-EXCHANGE").build();
+		return ExchangeBuilder.directExchange("FDC-QUOTATION-EXCHANGE").build();
 	}
 
 	@Bean
@@ -26,7 +27,9 @@ public class RabbitMQConfig {
 
 	@Bean
 	public Binding binding() {
-		return BindingBuilder.bind(queue()).to(exchange()).with("*").noargs();
+		//This is done so that depending upon the package type of the event the routing will happen. If you want to change the 
+		//routing key from package to something else please define the bean public RoutingKeyResolver routingKeyResolver()
+		return BindingBuilder.bind(queue()).to(exchange()).with("com.cts.event").noargs();
 	}
 
 	@Autowired
