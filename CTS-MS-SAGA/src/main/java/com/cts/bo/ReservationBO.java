@@ -2,6 +2,9 @@ package com.cts.bo;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class ReservationBO {
 
 	private String iternaryId;

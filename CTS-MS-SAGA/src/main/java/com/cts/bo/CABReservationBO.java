@@ -1,5 +1,8 @@
 package com.cts.bo;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class CABReservationBO extends ReservationBO {
 	
 	private String cabNumber;

@@ -12,7 +12,10 @@ import com.cts.command.FlightBookOrCancelCommand;
 import com.cts.event.FlightBookOrCancelEvent;
 import com.cts.event.FlightReservationDoneEvent;
 
+import lombok.NoArgsConstructor;
+
 @Aggregate
+@NoArgsConstructor
 public class FlightAggregate {
 
 	@AggregateIdentifier

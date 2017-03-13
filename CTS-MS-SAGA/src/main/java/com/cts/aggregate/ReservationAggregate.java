@@ -10,7 +10,10 @@ import org.axonframework.spring.stereotype.Aggregate;
 import com.cts.command.ReserveCommand;
 import com.cts.event.ReservationEvent;
 
+import lombok.NoArgsConstructor;
+
 @Aggregate
+@NoArgsConstructor
 public class ReservationAggregate {
 
 	@AggregateIdentifier

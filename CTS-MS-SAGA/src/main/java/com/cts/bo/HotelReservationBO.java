@@ -1,5 +1,8 @@
 package com.cts.bo;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class HotelReservationBO extends ReservationBO {
 	
 	private String hotelName;

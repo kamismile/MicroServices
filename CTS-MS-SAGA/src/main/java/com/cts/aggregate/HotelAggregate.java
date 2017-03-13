@@ -12,7 +12,10 @@ import com.cts.command.HotelBookOrCancelCommand;
 import com.cts.event.HotelBookOrCancelEvent;
 import com.cts.event.HotelReservationDoneEvent;
 
+import lombok.NoArgsConstructor;
+
 @Aggregate
+@NoArgsConstructor
 public class HotelAggregate {
 
 	@AggregateIdentifier

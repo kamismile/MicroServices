@@ -14,7 +14,10 @@ import com.cts.event.CABBookOrCancelEvent;
 import com.cts.event.CABReservationDoneEvent;
 import com.cts.event.HotelReservationDoneEvent;
 
+import lombok.NoArgsConstructor;
+
 @Aggregate
+@NoArgsConstructor
 public class CABAggregate {
 	
 	@AggregateIdentifier
