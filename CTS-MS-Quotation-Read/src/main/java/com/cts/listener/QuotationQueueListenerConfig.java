@@ -18,7 +18,7 @@ public class QuotationQueueListenerConfig {
 	public SpringAMQPMessageSource readQuotationQueue(Serializer serializer) {
 		return new SpringAMQPMessageSource(new DefaultAMQPMessageConverter(serializer)) {
 
-			@RabbitListener(queues = "FDC-QUOTATION-QUEUE")
+			@RabbitListener(queues = "FDC-SAGA-QUEUE")
 			@Override
 			public void onMessage(Message message, Channel channel) throws Exception {
 				super.onMessage(message, channel);
