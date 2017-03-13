@@ -1,18 +1,18 @@
 package com.cts.command;
 
-import com.cts.bo.AbstractReservationBO;
+import com.cts.bo.ReservationBO;
 
 public abstract class BookOrCancelCommand {
 	
-	private AbstractReservationBO reservationBO;
+	private ReservationBO reservationBO;
 	
 	private Boolean isBook=true;
 
-	public AbstractReservationBO getReservationBO() {
+	public ReservationBO getReservationBO() {
 		return reservationBO;
 	}
 
-	public void setReservationBO(AbstractReservationBO reservationBO) {
+	public void setReservationBO(ReservationBO reservationBO) {
 		this.reservationBO = reservationBO;
 	}
 

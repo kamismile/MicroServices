@@ -1,9 +1,10 @@
 package com.cts.bo;
 
-public class CABReservationBO extends AbstractReservationBO {
+public class CABReservationBO extends ReservationBO {
 	
 	private String cabNumber;
 	private  String driverName;
+	private String reservationId;
 	public String getCabNumber() {
 		return cabNumber;
 	}
@@ -15,6 +16,12 @@ public class CABReservationBO extends AbstractReservationBO {
 	}
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
+	}
+	public String getReservationId() {
+		return reservationId;
+	}
+	public void setReservationId(String reservationId) {
+		this.reservationId = reservationId;
 	}
 	
 	

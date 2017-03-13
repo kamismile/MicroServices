@@ -18,3 +18,13 @@ server:
 axon:
   amqp:
     exchange: FDC-SAGA-EXCHANGE
+  eventhandling:
+    processors:
+      CreateQuotation:
+        source: springManagedReadSAGAQueue
+      HotelBookOrCancel:
+        source: springManagedReadSAGAQueue
+      FlightBookOrCancel:
+        source: springManagedReadSAGAQueue
+      CABBookOrCancel:
+        source: springManagedReadSAGAQueue

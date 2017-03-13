@@ -14,7 +14,7 @@ public class HotelBookOrCancelHandler {
 	@EventHandler
 	public void on(HotelBookOrCancelEvent item) {
 		HotelReservationBO hotelReservationBO = (HotelReservationBO) item.getReservationBO();
-		System.out.println("The Hotel Is Booked: " + hotelReservationBO.getReservationId());
+		System.out.println("The Hotel Is Booked: " + hotelReservationBO);
 	}
 
 }

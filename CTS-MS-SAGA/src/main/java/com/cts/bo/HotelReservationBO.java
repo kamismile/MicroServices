@@ -1,6 +1,6 @@
 package com.cts.bo;
 
-public class HotelReservationBO extends AbstractReservationBO {
+public class HotelReservationBO extends ReservationBO {
 	
 	private String hotelName;
 	private String reservationId;
