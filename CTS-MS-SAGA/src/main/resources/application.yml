@@ -28,3 +28,10 @@ axon:
         source: springManagedReadSAGAQueue
       CABBookOrCancel:
         source: springManagedReadSAGAQueue
+  distributed:
+    jgroups:
+      enabled: true
+      cluster-name: FDC-SAGA-CLUSTER
+      gossip:
+        auto-start: true
+        

@@ -10,9 +10,9 @@
 	<!-- Ned appender to write to file -->
 	
 	<!-- Setting the root level of logging to INFO -->
-	<!-- <root level="ERROR">
+	<root level="ERROR">
 		<appender-ref ref="STDOUT" />
-	</root>-->
+	</root>
 	<logger name="org.springframework" level="INFO">
 		<appender-ref ref="STDOUT" />
 	</logger>

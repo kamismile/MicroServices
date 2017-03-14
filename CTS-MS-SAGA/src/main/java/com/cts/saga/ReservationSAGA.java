@@ -44,6 +44,7 @@ public class ReservationSAGA {
 		flightReservationBO.setFlightNumber("PHOENIX-714");
 		flightReservationBO.setFlightBookingReferenceNumber(UUID.randomUUID().toString());
 		flight_command.setReservationBO(flightReservationBO);
+		flight_command.setFlightBookingReferenceNumber(flightReservationBO.getFlightBookingReferenceNumber());
 		commandGateway.send(flight_command);
 	}
 	
@@ -57,6 +58,7 @@ public class ReservationSAGA {
 		hotelReservationBO.setReservationId(UUID.randomUUID().toString());
 		hotelReservationBO.setHotelName("HYATT");		
 		hotel_command.setReservationBO(hotelReservationBO);
+		hotel_command.setHotelBookingReferenceNumber(hotelReservationBO.getReservationId());
 		commandGateway.send(hotel_command);
 	}
 	
@@ -71,6 +73,7 @@ public class ReservationSAGA {
 		cabReservationBO.setCabNumber("VIPER-007");		
 		cabReservationBO.setDriverName("Pierce Brosnan");
 		cab_command.setReservationBO(cabReservationBO);
+		cab_command.setCabBookingReferenceNumber(cabReservationBO.getReservationId());
 		commandGateway.send(cab_command);
 	}
 	
