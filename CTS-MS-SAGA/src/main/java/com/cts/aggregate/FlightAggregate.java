@@ -11,6 +11,7 @@ import com.cts.bo.FlightReservationBO;
 import com.cts.command.FlightBookOrCancelCommand;
 import com.cts.event.FlightBookOrCancelEvent;
 import com.cts.event.FlightReservationDoneEvent;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.NoArgsConstructor;
 
@@ -23,8 +24,8 @@ public class FlightAggregate {
 
 	@CommandHandler
 	public FlightAggregate(FlightBookOrCancelCommand command) {
-		apply(new FlightBookOrCancelEvent(command.getReservationBO()));
-		apply(new FlightReservationDoneEvent(command.getReservationBO()));// Notify
+		apply(new FlightBookOrCancelEvent((FlightReservationBO)command.getReservationBO()));
+		apply(new FlightReservationDoneEvent((FlightReservationBO)command.getReservationBO()));// Notify
 																			// the
 																			// saga
 																			// to
@@ -34,15 +35,29 @@ public class FlightAggregate {
 
 	@EventSourcingHandler
 	protected void on(FlightBookOrCancelEvent event) {
+		try{
+			@SuppressWarnings("unused")
+			String test=new ObjectMapper().writeValueAsString(event);
+			}
+			catch(Exception ex){
+				
+			}
 		this.flightBookingReferenceNumber = ((FlightReservationBO) event.getReservationBO())
 				.getFlightBookingReferenceNumber();
+		
 
 	}
 
 	@EventSourcingHandler
 	protected void on(FlightReservationDoneEvent event) {
-		this.flightBookingReferenceNumber = ((FlightReservationBO) event.getResevationBO())
-				.getFlightBookingReferenceNumber();
+		try{
+		@SuppressWarnings("unused")
+		String test=new ObjectMapper().writeValueAsString(event);
+		}
+		catch(Exception ex){
+			
+		}
+		this.flightBookingReferenceNumber = event.getReservationBO().getFlightBookingReferenceNumber();
 
 	}
 

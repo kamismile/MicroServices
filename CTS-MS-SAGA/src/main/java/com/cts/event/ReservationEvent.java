@@ -2,7 +2,10 @@ package com.cts.event;
 
 import com.cts.bo.ReservationBO;
 
+
 public class ReservationEvent {
+	
+	private String iternaryId;
 	
 	private ReservationBO resevationBO;
 
@@ -17,8 +20,18 @@ public class ReservationEvent {
 	public ReservationEvent(ReservationBO resevationBO) {
 		super();
 		this.resevationBO = resevationBO;
+		this.iternaryId=resevationBO.getIternaryId();
 	}
 	
+	
+	public String getIternaryId() {
+		return iternaryId;
+	}
+
+	public void setIternaryId(String iternaryId) {
+		this.iternaryId = iternaryId;
+	}
+
 	public ReservationEvent(){
 		
 	}

@@ -23,8 +23,8 @@ public class HotelAggregate {
 
 	@CommandHandler
 	public HotelAggregate(HotelBookOrCancelCommand command) {
-		apply(new HotelBookOrCancelEvent(command.getReservationBO()));
-		apply(new HotelReservationDoneEvent(command.getReservationBO()));// Notify
+		apply(new HotelBookOrCancelEvent((HotelReservationBO)command.getReservationBO()));
+		apply(new HotelReservationDoneEvent((HotelReservationBO)command.getReservationBO()));// Notify
 																			// the
 																			// saga
 																			// to
@@ -33,7 +33,7 @@ public class HotelAggregate {
 	}
 
 	@EventSourcingHandler
-	protected void on(HotelBookOrCancelCommand event) {
+	protected void on(HotelBookOrCancelEvent event) {
 		this.hotelBookingReferenceNumber = ((HotelReservationBO) event.getReservationBO())
 				.getReservationId();
 
@@ -41,8 +41,7 @@ public class HotelAggregate {
 
 	@EventSourcingHandler
 	protected void on(HotelReservationDoneEvent event) {
-		this.hotelBookingReferenceNumber = ((HotelReservationBO) event.getResevationBO())
-				.getReservationId();
+		this.hotelBookingReferenceNumber = event.getReservationBO().getReservationId();
 
 	}
 

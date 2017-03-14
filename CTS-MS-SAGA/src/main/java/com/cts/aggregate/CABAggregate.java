@@ -25,8 +25,8 @@ public class CABAggregate {
 	
 	@CommandHandler
 	public CABAggregate(CABBookOrCancelCommand command) {
-		apply(new CABBookOrCancelEvent(command.getReservationBO()));
-		apply(new CABReservationDoneEvent(command.getReservationBO()));// Notify
+		apply(new CABBookOrCancelEvent((CABReservationBO)command.getReservationBO()));
+		apply(new CABReservationDoneEvent((CABReservationBO)command.getReservationBO()));// Notify
 																			// the
 																			// saga
 																			// to
@@ -35,16 +35,15 @@ public class CABAggregate {
 	}
 
 	@EventSourcingHandler
-	protected void on(HotelBookOrCancelCommand event) {
+	protected void on(CABBookOrCancelEvent event) {
 		this.cabBookingReferenceNumber = ((CABReservationBO) event.getReservationBO())
 				.getReservationId();
 
 	}
 
 	@EventSourcingHandler
-	protected void on(HotelReservationDoneEvent event) {
-		this.cabBookingReferenceNumber = ((CABReservationBO) event.getResevationBO())
-				.getReservationId();
+	protected void on(CABReservationDoneEvent event) {
+		this.cabBookingReferenceNumber = event.getReservationBO().getReservationId();
 
 	}
 

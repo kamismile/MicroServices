@@ -35,7 +35,7 @@ public class ReservationSAGA {
 	@StartSaga
 	@SagaEventHandler(associationProperty = "iternaryId")
 	public void on(ReservationEvent event) {
-		iternaryId = event.getResevationBO().getIternaryId();
+		this.iternaryId = event.getResevationBO().getIternaryId();
 		// First Reserve The Flight
 		FlightBookOrCancelCommand flight_command = new FlightBookOrCancelCommand();
 		flight_command.setIsBook(true);
@@ -53,7 +53,7 @@ public class ReservationSAGA {
 		HotelBookOrCancelCommand hotel_command = new HotelBookOrCancelCommand();
 		hotel_command.setIsBook(true);
 		HotelReservationBO hotelReservationBO = new HotelReservationBO();
-		BeanUtils.copyProperties(event.getResevationBO(), hotelReservationBO);
+		BeanUtils.copyProperties(event.getReservationBO(), hotelReservationBO);
 		hotelReservationBO.setReservationId(UUID.randomUUID().toString());
 		hotelReservationBO.setHotelName("HYATT");		
 		hotel_command.setReservationBO(hotelReservationBO);
@@ -66,7 +66,7 @@ public class ReservationSAGA {
 		CABBookOrCancelCommand cab_command = new CABBookOrCancelCommand();
 		cab_command.setIsBook(true);
 		CABReservationBO cabReservationBO = new CABReservationBO();
-		BeanUtils.copyProperties(event.getResevationBO(), cabReservationBO);
+		BeanUtils.copyProperties(event.getReservationBO(), cabReservationBO);
 		cabReservationBO.setReservationId(UUID.randomUUID().toString());
 		cabReservationBO.setCabNumber("VIPER-007");		
 		cabReservationBO.setDriverName("Pierce Brosnan");
