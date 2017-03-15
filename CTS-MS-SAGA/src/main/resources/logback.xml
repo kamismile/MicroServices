@@ -8,7 +8,7 @@
 		</encoder>
 	</appender>
 	<!-- Ned appender to write to file -->
-	
+
 	<!-- Setting the root level of logging to INFO -->
 	<root level="ERROR">
 		<appender-ref ref="STDOUT" />

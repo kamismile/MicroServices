@@ -9,10 +9,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import com.cts.bo.CABReservationBO;
 import com.cts.command.CABBookOrCancelCommand;
-import com.cts.command.HotelBookOrCancelCommand;
 import com.cts.event.CABBookOrCancelEvent;
 import com.cts.event.CABReservationDoneEvent;
-import com.cts.event.HotelReservationDoneEvent;
 
 import lombok.NoArgsConstructor;
 
