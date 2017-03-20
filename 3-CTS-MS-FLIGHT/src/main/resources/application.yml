@@ -14,19 +14,13 @@ spring:
     hibernate:
        ddl-auto: update
 server:
-  port: 9090
+  port: 9092
 axon:
   amqp:
     exchange: FDC-SAGA-EXCHANGE
   eventhandling:
     processors:
-      ReservationSAGA:
-        source: springManagedReadSAGAQueue
-      HotelBookOrCancel:
-        source: springManagedReadSAGAQueue
       FlightBookOrCancel:
-        source: springManagedReadSAGAQueue
-      CABBookOrCancel:
         source: springManagedReadSAGAQueue
   distributed:
     jgroups:

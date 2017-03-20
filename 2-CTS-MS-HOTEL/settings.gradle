@@ -1,0 +1,2 @@
+include ":common"
+project (":common").projectDir = file("../5-CTS-MS-COMMON-DS")
