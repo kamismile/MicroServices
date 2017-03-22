@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fdc-saga
+    name: fdc-flight
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost/fdc-cqrs-eventstore
@@ -22,11 +22,15 @@ axon:
     processors:
       FlightBookOrCancel:
         source: springManagedReadSAGAQueue
-  distributed:
-    jgroups:
-      enabled: true
-      cluster-name: FDC-SAGA-CLUSTER
-      bind-addr: 127.0.0.1
-      gossip:
-        auto-start: true
+  #distributed:
+   # jgroups:
+    #  enabled: true
+     # cluster-name: FDC-SAGA-CLUSTER
+      #bind-addr: 127.0.0.1
+      #gossip:
+       # auto-start: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/   
         

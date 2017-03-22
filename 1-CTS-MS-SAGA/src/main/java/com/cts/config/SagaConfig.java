@@ -1,7 +1,6 @@
 package com.cts.config;
 
 import org.axonframework.amqp.eventhandling.spring.SpringAMQPMessageSource;
-import org.axonframework.common.transaction.TransactionManager;
 import org.axonframework.eventhandling.EventProcessor;
 import org.axonframework.eventhandling.SubscribingEventProcessor;
 import org.axonframework.eventhandling.saga.AbstractSagaManager;
@@ -17,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.cts.saga.ReservationSAGA;
 
@@ -33,7 +32,7 @@ public class SagaConfig {
 	
 	
 	@Autowired
-	SpringTransactionManager transactionManager;
+	PlatformTransactionManager transactionManager;
 	
 	
 
@@ -52,13 +51,12 @@ public class SagaConfig {
 		// TODO Auto-generated method stub
 		return new AnnotatedSagaRepository<>(ReservationSAGA.class, sagaStore, resourceInjector());
 	}
-	
-	
+
 	@Bean
 	public EventProcessor reservationSagaEventProcessor() {
 		SubscribingEventProcessor eventProcessor = new SubscribingEventProcessor("reservationSagaEventProcessor",
 				reservationSagaManager(), eventStore);
-		eventProcessor.registerInterceptor(new TransactionManagingInterceptor<>(transactionManager));
+		eventProcessor.registerInterceptor(new TransactionManagingInterceptor<>(new SpringTransactionManager(transactionManager)));
 		eventProcessor.start();
 		return eventProcessor;
 	}
