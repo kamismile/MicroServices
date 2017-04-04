@@ -32,13 +32,15 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-hateoas')	
 	compile('org.springframework.data:spring-data-rest-hal-browser')
-	compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
-	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	//compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+	//compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'		
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+	// https://mvnrepository.com/artifact/io.pivotal.spring.cloud/spring-cloud-services-starter-config-client
+    compile group: 'io.pivotal.spring.cloud', name: 'spring-cloud-services-starter-config-client', version: '1.4.1.RELEASE'	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
