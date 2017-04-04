@@ -2,6 +2,7 @@ package com.cts.aggregate;
 
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 
+import org.apache.log4j.Logger;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -17,12 +18,14 @@ import lombok.NoArgsConstructor;
 @Aggregate
 @NoArgsConstructor
 public class HotelAggregate {
+	private static Logger log = Logger.getLogger(HotelAggregate.class);
 
 	@AggregateIdentifier
 	private String hotelBookingReferenceNumber;
 
 	@CommandHandler
 	public HotelAggregate(HotelBookOrCancelCommand command) {
+		log.debug("-------------------------------You are all set Garfiedl! I will book your hotel---------------------------------------");
 		apply(new HotelBookOrCancelEvent((HotelReservationBO)command.getReservationBO()));
 		apply(new HotelReservationDoneEvent((HotelReservationBO)command.getReservationBO()));// Notify
 																			// the

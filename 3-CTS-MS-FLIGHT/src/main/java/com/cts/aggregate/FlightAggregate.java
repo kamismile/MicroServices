@@ -28,6 +28,7 @@ public class FlightAggregate {
 	@CommandHandler
 	public FlightAggregate(FlightBookOrCancelCommand command) {		
 		//log.info("***************Wake Up***********************");
+		log.debug("-------------------------------You are all set Garfiedl! I will book your flight---------------------------------------");
 		apply(new FlightBookOrCancelEvent((FlightReservationBO)command.getReservationBO()));
 		apply(new FlightReservationDoneEvent((FlightReservationBO)command.getReservationBO()));// Notify
 																			// the

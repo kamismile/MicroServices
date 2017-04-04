@@ -2,6 +2,7 @@ package com.cts.aggregate;
 
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 
+import org.apache.log4j.Logger;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -18,11 +19,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CABAggregate {
 	
+	private static Logger log = Logger.getLogger(CABAggregate.class);
+	
 	@AggregateIdentifier
 	private String cabBookingReferenceNumber;
 	
 	@CommandHandler
 	public CABAggregate(CABBookOrCancelCommand command) {
+		log.debug("-------------------------------You are all set Garfiedl! I will book your CAB---------------------------------------");
 		apply(new CABBookOrCancelEvent((CABReservationBO)command.getReservationBO()));
 		apply(new CABReservationDoneEvent((CABReservationBO)command.getReservationBO()));// Notify
 																			// the

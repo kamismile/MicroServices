@@ -2,13 +2,13 @@ package com.cts.saga;
 
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventhandling.saga.EndSaga;
 import org.axonframework.eventhandling.saga.SagaEventHandler;
 import org.axonframework.eventhandling.saga.StartSaga;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.cts.bo.CABReservationBO;
 import com.cts.bo.FlightReservationBO;
 import com.cts.bo.HotelReservationBO;
@@ -23,6 +23,8 @@ import com.cts.event.ReservationEvent;
 
 //@Saga
 public class ReservationSAGA {
+	
+	private static Logger log = Logger.getLogger(ReservationSAGA.class);
 
 	@Autowired
 	private transient CommandGateway commandGateway;
@@ -35,6 +37,7 @@ public class ReservationSAGA {
 	@StartSaga
 	@SagaEventHandler(associationProperty = "iternaryId")
 	public void on(ReservationEvent event) {
+		log.debug("--------------------Going to book the flight first----------------------------");
 		this.iternaryId = event.getResevationBO().getIternaryId();
 		// First Reserve The Flight
 		FlightBookOrCancelCommand flight_command = new FlightBookOrCancelCommand();
@@ -53,6 +56,7 @@ public class ReservationSAGA {
 	@SagaEventHandler(associationProperty = "iternaryId")
 	public void on(FlightReservationDoneEvent event) {
 		// Now book hotel
+		log.debug("--------------------Going to book the hotel now----------------------------");
 		HotelBookOrCancelCommand hotel_command = new HotelBookOrCancelCommand();
 		hotel_command.setIsBook(true);
 		HotelReservationBO hotelReservationBO = new HotelReservationBO();
@@ -65,7 +69,8 @@ public class ReservationSAGA {
 	}
 	
 	@SagaEventHandler(associationProperty = "iternaryId")
-	public void on(HotelReservationDoneEvent event) {		
+	public void on(HotelReservationDoneEvent event) {
+		log.debug("--------------------Going to book the CAB now----------------------------");
 		// Now book CAB
 		CABBookOrCancelCommand cab_command = new CABBookOrCancelCommand();
 		cab_command.setIsBook(true);
@@ -82,6 +87,7 @@ public class ReservationSAGA {
 	@EndSaga
 	@SagaEventHandler(associationProperty = "iternaryId")
 	public void on(CABReservationDoneEvent event) {
+		log.debug("--------------------All Done!! Garfield enjoy your vacation----------------------------");
 		
 	}
 
