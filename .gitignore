@@ -5,3 +5,5 @@ target
 /CTS-MS-Zuul-API-Server.zip
 gradle
 /CTS-MS-ConfigServer-Client.zip
+bin
+build

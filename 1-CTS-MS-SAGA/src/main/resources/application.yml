@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: fdc-saga
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost/fdc-cqrs-eventstore
+      username: root
+      password: root@1234
+      max-active: 5 
+      validation-query: select 1
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect   
+    hibernate:
+       ddl-auto: update
+server:
+  port: 9090
+axon:
+  amqp:
+    exchange: FDC-SAGA-EXCHANGE
+management:
+  security:
+     enabled: false
+---
+spring:
+  profiles: cloud
+  application:
+    name: fdc-saga  
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect   
+    hibernate:
+       ddl-auto: update
+server:
+  port: 9090
+axon:
+  amqp:
+    exchange: FDC-SAGA-EXCHANGE
+management:
+  security:
+     enabled: false    
+security:
+  basic:
+    enabled: false
+        
