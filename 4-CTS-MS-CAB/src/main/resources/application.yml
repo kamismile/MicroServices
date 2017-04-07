@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: fdc-cab
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost/fdc-cqrs-eventstore
+      username: root
+      password: root@1234
+      max-active: 5 
+      validation-query: select 1
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect   
+    hibernate:
+       ddl-auto: update
+server:
+  port: 9093
+axon:
+  amqp:
+    exchange: FDC-SAGA-EXCHANGE
+  eventhandling:
+    processors:
+      CABBookOrCancel:
+        source: springManagedReadSAGAQueue
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: cloud
+  application:
+    name: fdc-cab
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect   
+    hibernate:
+       ddl-auto: update
+axon:
+  amqp:
+    exchange: FDC-SAGA-EXCHANGE
+  eventhandling:
+    processors:
+      CABBookOrCancel:
+        source: springManagedReadSAGAQueue
+management:
+  security:
+     enabled: false    
+security:
+  basic:
+    enabled: false
+        
