@@ -1,0 +1,14 @@
+---
+applications:
+- buildpack: java_buildpack
+  name: fdc-flight
+  memory: 1024M
+  path: ./build/libs/3-CTS-MS-FLIGHT-0.0.1-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+  - SKG-AXON-DB
+  - SKG-Message-BUS
+  - SKG-EUREKA-SERVER
+  host: fdc-flight
+  domain: cfapps.io
