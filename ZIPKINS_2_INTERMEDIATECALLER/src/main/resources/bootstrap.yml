@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ZIPKIN_CLIENT_SERVICE
+  rabbitmq:
+    host: localhost
+    port: 5672
+  sleuth:
+    sampler:
+      percentage: 1
+server:
+  port: 8085
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
