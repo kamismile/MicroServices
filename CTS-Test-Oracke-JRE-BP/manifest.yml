@@ -1,0 +1,12 @@
+---
+applications:
+- name: SKG-ORACLE-VER
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git 
+  memory: 1024M
+  path: ./build/libs/CTS-Test-Oracke-JRE-BP-0.0.1-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    JBP_CONFIG_ORACLE_JRE: '[jre: {repository_root: "http://61.238.99.221/oracle_jdk/linux_x64/"}]'
+    JBP_CONFIG_COMPONENTS: '[jres: ["JavaBuildpack::Jre::OracleJRE"]]'
+  host: SKG-ORACLE-VER
+  domain: cfapps.io

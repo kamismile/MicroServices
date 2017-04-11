@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: SKG-ORACLE-VER
+management:
+  security:
+     enabled: false    
+security:
+  basic:
+    enabled: false
+---
+spring:
+  profiles: cloud
+  application:
+    name: SKG-ORACLE-VER
+management:
+  security:
+     enabled: false    
+security:
+  basic:
+    enabled: false
