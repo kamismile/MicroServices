@@ -32,6 +32,16 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-stream-rabbit
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version: '1.2.0.RELEASE'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    // https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
+    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '4.9'
+    // https://mvnrepository.com/artifact/org.logback-extensions/logback-ext-loggly
+    compile group: 'org.logback-extensions', name: 'logback-ext-loggly', version: '0.1.4'
+        
+	
 }
 
 dependencyManagement {
