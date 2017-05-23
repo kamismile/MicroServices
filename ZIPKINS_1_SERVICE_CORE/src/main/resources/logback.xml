@@ -40,9 +40,9 @@
 		</encoder>
 	</appender>
 	<appender name="loggly" class="ch.qos.logback.ext.loggly.LogglyAppender">
-		<endpointUrl>http://logs-01.loggly.com/inputs/3e4d7c64-105f-4cba-8f60-e5d91d19fc88/tag/logback
+		<endpointUrl>http://logs-01.loggly.com/inputs/66c65c6a-e121-46d2-9f7f-30f42d801d95/tag/logback
 		</endpointUrl>
-		<pattern>[${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] %d{"ISO8601", UTC} %p %t %c{0}.%M - %m%n</pattern>
+		<pattern>[SPRINGAPPNAME::${springAppName:-}::SPRINGAPPNAME,TRACE-ID::%X{X-B3-TraceId:-}::TRACE-ID,SPAN-ID::%X{X-B3-SpanId:-}::SPAN-ID,SPAN-EXPORT::%X{X-Span-Export:-}::SPAN-EXPORT] %d{"ISO8601", UTC} %p %t %c{0}.%M - %m%n</pattern>
 	</appender>
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
